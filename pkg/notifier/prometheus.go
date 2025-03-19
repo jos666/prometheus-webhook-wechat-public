@@ -42,7 +42,7 @@ func BuildWechatMsg(templateid string, promMessage *models.WebhookMessage, alert
 				Color: wctemplatecolor,
 			},
 			Message: models.ValueColor{
-				Value: alert.Annotations.Message,
+				Value: alert.Annotations.Message + " " + alert.Annotations.Summary,
 				Color: wctemplatecolor,
 			},
 			StartsAt: models.ValueColor{
