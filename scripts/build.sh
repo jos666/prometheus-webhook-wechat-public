@@ -7,7 +7,7 @@ _init() {
     LDFLAGS=
 
     # List of supported architectures
-    SUPPORTED_OSARCH='linux/amd64 darwin/amd64'
+    SUPPORTED_OSARCH='linux/amd64 linux/arm64'
 }
 
 go_build() {
