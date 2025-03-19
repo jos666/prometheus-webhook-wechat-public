@@ -52,7 +52,7 @@ func init() {
 	cfg.fs.DurationVar(&cfg.requestTimeout, "wechat.timeout", 5*time.Second,
 		"Timeout for invoking wechat webhook.",
 	)
-	cfg.fs.StringVar(&cfg.configdir, "config.file", "/config/config.yaml",
+	cfg.fs.StringVar(&cfg.configdir, "config.file", "config.yaml",
 		"config yaml path",
 	)
 
