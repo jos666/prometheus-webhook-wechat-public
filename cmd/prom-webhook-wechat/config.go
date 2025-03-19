@@ -55,13 +55,17 @@ func init() {
 	cfg.fs.StringVar(&cfg.configdir, "config.file", "config.yaml",
 		"config yaml path",
 	)
+}
 
+func (config *Config) readConfig(){
 	configBytes, err := os.ReadFile(cfg.configdir)
 	if err != nil {
 		fmt.Print("msg: ", "Load config file error: ", err)
+		fmt.Print("\n")
+        usage()
 		os.Exit(10)
 	}
-	var config Config
+	//var config Config
 	err = yaml.Unmarshal(configBytes, &config)
 	if err != nil {
 		fmt.Print("msg: ", "Unmarshal config file error: ", err)
@@ -71,7 +75,6 @@ func init() {
 	cfg.corpid = config.Appid
 	cfg.corpsecret = config.Secret
 	cfg.WechatProfiles.Set(config.Chatids)
-
 }
 
 func parse(args []string) error {

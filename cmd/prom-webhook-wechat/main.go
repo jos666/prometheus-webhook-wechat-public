@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"gopkg.in/yaml.v2"
 	"log"
 	"net/http"
 	"os"
@@ -19,16 +18,8 @@ func main() {
 		}
 		log.Fatalf("Parse error: %s", err)
 	}
-
-	configBytes, err := os.ReadFile(cfg.configdir)
-	if err != nil {
-		log.Panicf("msg: ", "Load config file error: %s", err)
-	}
 	var config Config
-	err = yaml.Unmarshal(configBytes, &config)
-	if err != nil {
-		log.Panicf("msg: ", "Unmarshal config file error: %s", err)
-	}
+    config.readConfig()
 
 	r := chi.NewRouter()
 	// A good base middleware stack
